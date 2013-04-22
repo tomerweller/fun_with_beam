@@ -9,8 +9,6 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import static android.nfc.NdefRecord.createMime;
-
 /**
  * User: tomerweller
  * Date: 4/22/13
@@ -45,8 +43,9 @@ public class BeamSenderActivity extends Activity implements NfcAdapter.CreateNde
         String text = ("Beam me up, Android!\n\n" +
                 "Beam Time: " + System.currentTimeMillis());
         NdefMessage msg = new NdefMessage(
-                new NdefRecord[] { createMime("application/com.fun_with_beam", text.getBytes())}
-        );
+                new NdefRecord[] {
+                        NdefRecord.createMime("application/com.fun_with_beam", text.getBytes())
+                });
         return msg;
     }
 
